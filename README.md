@@ -1,6 +1,6 @@
 # TutorialARMeasure
 
-This tutorial is based on MeasureARKitPusher made by eh3rrea
+This tutorial is based on MeasureARKitPusher made by eh3rrera(https://github.com/eh3rrera/MeasureARKitPusher)
 
 # Requirements
 - Xcode 9
