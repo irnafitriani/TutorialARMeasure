@@ -36,14 +36,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         didSet{
             switch mode {
             case .waitingForMeasuring:
-                status = "Not Ready"
+                status = "NOT READY"
             case .measuring:
                 box.update(
                     minExtents: SCNVector3Zero, maxExtents:SCNVector3Zero)
                 box.isHidden = false
                 startPosition = nil
                 distance = 0.0
-                
                 setStatusText()
             }
         }
@@ -88,6 +87,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         //Create a session configuration with plane detection
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         
         //Run the view's session
         sceneView.session.run(configuration)
@@ -124,7 +124,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         var text = "Status: \(status!) \n"
         text += "Tracking: \(getTrackingDescription()) \n"
         text += "Distance: \(String(format:"%.2f cm", distance! * 100.0))"
-        
         statusTextView.text = text
     }
     
@@ -209,6 +208,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }else{
             status = "NOT READY"
         }
+        setStatusText()
     }
     
 }
